@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marmulle <marmulle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/26 13:57:44 by marmulle          #+#    #+#             */
-/*   Updated: 2023/02/15 19:13:25 by marmulle         ###   ########.fr       */
+/*   Created: 2022/11/30 12:38:25 by marmulle          #+#    #+#             */
+/*   Updated: 2023/01/31 11:41:15 by marmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
+# include "libft.h"
+# include <stdarg.h>
 
-	if (!s)
-		return (0);
-	i = 0;
-	while (s[i])
-		++i;
-	return (i);
-}
+// Main ft_printf
+int		ft_printf(const char *fmt, ...);
+
+// Print utilities
+void	ft_print_char(char c, int *count);
+void	ft_print_str(const char *s, int *count);
+void	ft_print_nbr(long n, int *count);
+void	ft_print_hex(uintptr_t n, char uppercase, int *count);
+void	ft_print_ptr(uintptr_t ptr, int *count);
+
+#endif

@@ -48,26 +48,40 @@ BONUS := \
 	ft_lstmap
 BONUS_C := $(addsuffix _bonus.c, $(BONUS))
 BONUS_O := $(addsuffix _bonus.o, $(BONUS))
+SUPPLEMENTARY := \
+	ft_printf \
+	ft_print_utils \
+	get_next_line_bonus \
+	get_next_line_utils_bonus \
+	array_memory \
+	array_basic \
+	array_convenience
+SUPP_C := $(addsuffix .c, $(SUPPLEMENTARY))
+SUPP_O := $(addsuffix .o, $(SUPPLEMENTARY))
 CC_FLAG := -Wall -Wextra -Werror -c
 
 .PHONY: all clean fclean re bonus
 
-all: $(NAME)
+all: $(NAME) bonus
 
 $(NAME):
-	cc $(CC_FLAG) $(SRC_C)
-	ar -crs $(NAME) $(SRC_O)
+	@cc $(CC_FLAG) $(SRC_C)
+	@ar -crs $(NAME) $(SRC_O)
 
 clean:
-	rm -f $(SRC_O) $(BONUS_O)
+	@rm -f $(SRC_O) $(BONUS_O) $(SUPP_O)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 
-bonus: $(BONUS_O)
+bonus: $(BONUS_O) $(SUPP_O)
 
 $(BONUS_O):
-	cc $(CC_FLAG) $(BONUS_C)
-	ar -crs $(NAME) $(BONUS_O)
+	@cc $(CC_FLAG) $(BONUS_C)
+	@ar -crs $(NAME) $(BONUS_O)
+
+$(SUPP_O):
+	@cc $(CC_FLAG) $(SUPP_C)
+	@ar -crs $(NAME) $(SUPP_O)

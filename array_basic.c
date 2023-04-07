@@ -6,7 +6,7 @@
 /*   By: marmulle <marmulle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 15:16:37 by marmulle          #+#    #+#             */
-/*   Updated: 2023/04/07 15:17:29 by marmulle         ###   ########.fr       */
+/*   Updated: 2023/04/07 17:50:51 by marmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	arr_set(t_arr *arr, int i, void *el)
 {
-	arr->data[i] = el;
+	if (i < arr->max_len)
+		arr->data[i] = el;
 }
 
 void	*arr_get(t_arr *arr, int i)
